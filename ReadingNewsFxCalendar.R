@@ -16,7 +16,7 @@ library(stringr)
 # create data frame
 
 # read restricted news events as strings
-restrictedEvents <- read_excel("C:/Users/fxtrams/Documents/000_TradingRepo/R_NewsReading/RestrictedEvents.xlsx",
+restrictedEvents <- read_excel("D:/TradingRepos/R_NewsReading/RestrictedEvents.xlsx",
                                col_names = F)
 
 # get url to access the data. URL shall be like this: "http://www.forexfactory.com/calendar.php?day=dec2.2016"
@@ -66,46 +66,13 @@ for (j in 1:nrow(restrictedEvents))
 }
 
 # write the results of the all events (for user control purposes)
-write.csv(todaysEvents, paste("C:/Users/fxtrams/Documents/000_TradingRepo/R_NewsReading/log/log-", Sys.Date(), ".csv", sep = ""))
+write.csv(todaysEvents, paste("D:/TradingRepos/R_NewsReading/log/log-", Sys.Date(), ".csv", sep = ""))
 
 # write obtained dataframe to all terminals!
 #Terminal 1
-write.csv(flag, "C:/Program Files (x86)/FxPro - Terminal1/MQL4/Files/01_MacroeconomicEvent.csv", row.names = F)
+write.csv(flag, "D:/FxPro - Terminal1/MQL4/Files/01_MacroeconomicEvent.csv", row.names = F)
 #Terminal 2
-write.csv(flag, "C:/Program Files (x86)/FxPro - Terminal2/MQL4/Files/01_MacroeconomicEvent.csv", row.names = F)
+write.csv(flag, "D:/FxPro - Terminal2/MQL4/Files/01_MacroeconomicEvent.csv", row.names = F)
 #Terminal 3
-write.csv(flag, "C:/Program Files (x86)/FxPro - Terminal3/MQL4/Files/01_MacroeconomicEvent.csv", row.names = F)
-#Terminal 4
-write.csv(flag, "C:/Program Files (x86)/FxPro - Terminal4/MQL4/Files/01_MacroeconomicEvent.csv", row.names = F)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+write.csv(flag, "D:/FxPro - Terminal3/MQL4/Files/01_MacroeconomicEvent.csv", row.names = F)
 
