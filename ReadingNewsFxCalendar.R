@@ -7,8 +7,9 @@
 # load libraries
 library(rvest)
 library(lubridate)
-library(readxl)
+library(tidyverse)
 library(stringr)
+library(magrittr)
 
 # summary of actions
 # import events list subjected to trade restrictions from xls file
@@ -16,7 +17,7 @@ library(stringr)
 # create data frame
 
 # read restricted news events as strings
-restrictedEvents <- read_excel("D:/TradingRepos/R_NewsReading/RestrictedEvents.xlsx",
+restrictedEvents <- read_csv("D:/TradingRepos/R_NewsReading/RestrictedEvents.csv",
                                col_names = F)
 
 # get url to access the data. URL shall be like this: "http://www.forexfactory.com/calendar.php?day=dec2.2016"
@@ -48,16 +49,16 @@ flag <- 0
 # if match is found write to new column "0" that will be interpreted as a NO trade
 for (j in 1:nrow(restrictedEvents))
   {
-    
-    matchingterm <- restrictedEvents[j, ] 
-    matchingterm.v <- matchingterm$X__1
+    # j <- 1
+    matchingterm <- restrictedEvents[j, 1] %$% X1
     
     for(i in 1:nrow(todaysEvents))
         {
-          
-          if(str_detect(todaysEvents[i, 2], matchingterm.v) == TRUE) 
+          # i <- 1
+          if(str_detect(todaysEvents[i, 2], matchingterm) == TRUE) 
              {
                 todaysEvents[i, 3] <- 0
+                # when flag is 1 then no trading as macroeconomical event is detected
                 flag <- 1
                 break
              }
